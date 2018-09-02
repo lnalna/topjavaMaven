@@ -27,8 +27,7 @@ public class MealsUtil {
 
     public static void main(String[] args) {
 
-
-        List<MealWithExceed> mealsWithExceeded = getFilteredWithExceeded(MEALS, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000);
+        List<MealWithExceed> mealsWithExceeded = getFilteredWithExceeded(MEALS, LocalTime.of(7, 0), LocalTime.of(12, 0), DEFAULT_CALORIES_PER_DAY);
         mealsWithExceeded.forEach(System.out::println);
     }
 
@@ -72,12 +71,12 @@ public class MealsUtil {
         Collection<List<Meal>> listDayMeals = meals.stream()
                 .collect(Collectors.groupingBy(Meal::getDate)).values();
         return listDayMeals
-                .stream().map(dayMeals -> {
+                .stream().flatMap(dayMeals -> {
                     boolean exceed = dayMeals.stream().mapToInt(Meal::getCalories).sum() > caloriesPerDay;
                     return dayMeals.stream().filter(meal ->
                             DateTimeUtil.isBetween(meal.getTime(), startTime, endTime))
                             .map(meal -> createWithExceed(meal, exceed));
-                }).flatMap(identity())
+                })
                 .collect(Collectors.toList());
     }
 
