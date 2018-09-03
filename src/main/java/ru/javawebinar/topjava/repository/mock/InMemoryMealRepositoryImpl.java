@@ -27,8 +27,10 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
     {
         MealsUtil.MEALS.forEach(um -> save(um, USER_ID));
 
-        save(new Meal(LocalDateTime.of(2018, Month.SEPTEMBER, 2, 14, 0), "Админ обед", 510), ADMIN_ID);
-        save(new Meal(LocalDateTime.of(2018, Month.SEPTEMBER, 2, 20, 0), "Админ ужин", 1500), ADMIN_ID);
+        save(new Meal(LocalDateTime.of(2018, Month.SEPTEMBER, 2, 14, 0),
+                "Админ обед", 510), ADMIN_ID);
+        save(new Meal(LocalDateTime.of(2018, Month.SEPTEMBER, 2, 20, 0),
+                "Админ ужин", 1500), ADMIN_ID);
     }
 
 
@@ -62,9 +64,9 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
 
     @Override
     public List<Meal> getBetween(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
-        return  getAllAsStream(userId)
-        .filter(um -> DateTimeUtil.isBetween(um.getDateTime(), startDateTime, endDateTime))
-        .collect(Collectors.toList());
+        return getAllAsStream(userId)
+                .filter(um -> DateTimeUtil.isBetween(um.getDateTime(), startDateTime, endDateTime))
+                .collect(Collectors.toList());
     }
 
     private Stream<Meal> getAllAsStream(int userId) {
@@ -72,6 +74,6 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
         return meals == null ?
                 Stream.empty() :
                 meals.values().stream()
-                .sorted(Comparator.comparing(Meal::getDateTime).reversed());
+                        .sorted(Comparator.comparing(Meal::getDateTime).reversed());
     }
 }
