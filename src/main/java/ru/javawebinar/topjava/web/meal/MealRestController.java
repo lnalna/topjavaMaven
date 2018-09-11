@@ -45,7 +45,7 @@ public class MealRestController {
 
     public Meal get(int id) {
         int userId = AuthorizedUser.id();
-        log.info("get meal {} for userId", id, userId);
+        log.info("get meal {} for userId={}", id, userId);
         return service.get(id, userId);
     }
 
