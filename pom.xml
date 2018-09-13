@@ -24,6 +24,9 @@
 
         <!-- Tests-->
         <junit.version>4.12</junit.version>
+
+        <!--DB-->
+        <postgresql.version>42.2.5</postgresql.version>
     </properties>
 
     <build>
@@ -98,6 +101,13 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
 
         <!--Test-->
