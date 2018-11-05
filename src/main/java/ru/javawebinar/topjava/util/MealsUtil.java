@@ -28,8 +28,8 @@ public class MealsUtil {
 
     public static void main(String[] args) {
 
-        List<MealWithExceed> mealsWithExceeded = getFilteredWithExceeded(MEALS, LocalTime.of(7, 0), LocalTime.of(12, 0), DEFAULT_CALORIES_PER_DAY);
-        mealsWithExceeded.forEach(System.out::println);
+        /*List<MealWithExceed> mealsWithExceeded = getFilteredWithExceeded(MEALS, LocalTime.of(7, 0), LocalTime.of(12, 0), DEFAULT_CALORIES_PER_DAY);
+        mealsWithExceeded.forEach(System.out::println);*/
     }
 
     public static List<MealWithExceed> getWithExceeded(Collection<Meal> meals, int caloriesPerDay) {
