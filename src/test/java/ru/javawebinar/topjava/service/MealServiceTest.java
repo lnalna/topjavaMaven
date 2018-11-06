@@ -41,7 +41,7 @@ public class MealServiceTest {
         service.delete(MEAL1_ID, 1);
     }
     @Test
-    public void testSave() throws Exception {
+    public void testCreate() throws Exception {
         Meal created = getCreated();
         service.create(created, USER_ID);
         MATCHER.assertCollectionEquals(Arrays.asList(created, MEAL6, MEAL5, MEAL4, MEAL3, MEAL2, MEAL1), service.getAll(USER_ID));
