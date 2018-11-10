@@ -16,6 +16,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <tomcat.version>8.5.15</tomcat.version>
         <spring.version>4.3.9.RELEASE</spring.version>
 
         <!--Logging-->
@@ -27,6 +28,7 @@
 
         <!--DB-->
         <postgresql.version>42.2.5</postgresql.version>
+        <hsqldb.version>2.3.4</hsqldb.version>
 
         <!-- Hibernate -->
         <hibernate.version>5.2.10.Final</hibernate.version>
@@ -122,6 +124,7 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+<!--
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -133,6 +136,7 @@
             <artifactId>hsqldb</artifactId>
             <version>2.3.4</version>
         </dependency>
+-->
 
         <!--- ORM -->
         <dependency>
@@ -170,6 +174,35 @@
     </dependencies>
 
     <profiles>
+        <profile>
+            <id>hsqldb</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.hsqldb</groupId>
+                    <artifactId>hsqldb</artifactId>
+                    <version>${hsqldb.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>postgres</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>${postgresql.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                    <version>${tomcat.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
 
     </profiles>
 
