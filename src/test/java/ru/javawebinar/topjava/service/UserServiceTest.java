@@ -41,6 +41,11 @@ public class UserServiceTest {
     @Autowired
     private UserService service;
 
+    @Before
+    public void setUp() throws Exception {
+        service.evictCache();
+    }
+
     @Test
     public void testCreate() throws Exception {
         User newUser = new User(null, "New", "new@gmail.com", "newPass", 1555,
