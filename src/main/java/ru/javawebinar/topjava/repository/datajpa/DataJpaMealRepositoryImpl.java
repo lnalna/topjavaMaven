@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public class DataJpaMealRepositoryImpl implements MealRepository {
-
+    @Autowired
     private CrudMealRepository crudMealRepository;
     @Autowired
     private CrudUserRepository crudUserRepository;
