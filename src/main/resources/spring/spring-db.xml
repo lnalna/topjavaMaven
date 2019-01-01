@@ -21,7 +21,7 @@
     <!-- Choose profile from (hsqldb, postgres) and (jdbc,datajpa,jpa) -->
 
     <beans profile="hsqldb">
-        <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
+        <context:property-placeholder location="classpath:db/hsqlDB.properties" system-properties-mode="OVERRIDE"/>
         <!--no pooling-->
         <bean id="dataSource"
               class="org.springframework.jdbc.datasource.DriverManagerDataSource"
