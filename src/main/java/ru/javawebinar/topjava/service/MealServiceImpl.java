@@ -54,4 +54,8 @@ public class MealServiceImpl implements MealService {
         Assert.notNull(endDateTime, "endDateTime must not be null");
         return repository.getBetween(startDateTime, endDateTime, userId);
     }
+
+    public Meal getWithUser(int id, int userId) {
+        return checkNotFoundWithId(repository.getWithUser(id, userId), id);
+    }
 }
