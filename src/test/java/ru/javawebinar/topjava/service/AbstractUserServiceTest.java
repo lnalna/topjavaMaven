@@ -14,7 +14,7 @@ import java.util.Date;
 import javax.validation.ConstraintViolationException;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 import java.util.Collections;
 
 import static ru.javawebinar.topjava.UserTestData.*;
@@ -39,7 +39,7 @@ public abstract class AbstractUserServiceTest extends AbstractServiceTest {
                 false, new Date(), Collections.singleton(Role.ROLE_USER));
         User created = service.create(newUser);
         newUser.setId(created.getId());
-        MATCHER.assertCollectionEquals(Arrays.asList(ADMIN, newUser, USER), service.getAll());
+        MATCHER.assertListEquals(Arrays.asList(ADMIN, newUser, USER), service.getAll());
     }
 
     @Test(expected = DataAccessException.class)
@@ -50,7 +50,7 @@ public abstract class AbstractUserServiceTest extends AbstractServiceTest {
     @Test
     public void testDelete() throws Exception {
         service.delete(USER_ID);
-        MATCHER.assertCollectionEquals(Collections.singletonList(ADMIN), service.getAll());
+        MATCHER.assertListEquals(Collections.singletonList(ADMIN), service.getAll());
     }
 
     @Test(expected = NotFoundException.class)
@@ -77,8 +77,8 @@ public abstract class AbstractUserServiceTest extends AbstractServiceTest {
 
     @Test
     public void testGetAll() throws Exception {
-        Collection<User> all = service.getAll();
-        MATCHER.assertCollectionEquals(Arrays.asList(ADMIN, USER), all);
+        List<User> all = service.getAll();
+        MATCHER.assertListEquals(Arrays.asList(ADMIN, USER), all);
     }
 
     @Test
